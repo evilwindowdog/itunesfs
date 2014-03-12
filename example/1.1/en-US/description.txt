@@ -1,0 +1,9 @@
+Description of sampleApp. This description
+spans multiple lines.
+
+"This app is awesome" - the 'reviewer'
+
+Features:
+▶ Does that
+▶ Also that
+▶ Yeap

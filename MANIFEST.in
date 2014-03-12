@@ -1,0 +1,3 @@
+include README.md LICENSE *.png
+recursive-include example *
+recursive-exclude example output.yaml .DS_Store

@@ -1,0 +1,13 @@
+The app was featured by Apple! yah!
+
+Description of sampleApp. This description
+spans multiple lines.
+
+"It's so cool" - New reviewer
+"This app is awesome" - the reviewer
+
+Features:
+▶ Does this simple thing
+▶ Does that
+▶ Also that
+▶ Yeap
