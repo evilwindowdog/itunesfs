@@ -9,7 +9,7 @@ An easier way is to **use itunes_transporter_generator (itmsp)** (<https://githu
 
 Essentially, **itunesfs**, by itself, performs the following coversion:
 
-![file hierarchy](README_FILE_HIERARCHY.png =150x) **------>** ![yaml output](README_YAML.png =170x)
+![file hierarchy](http://raw.github.com/evilwindowdog/itunesfs/master/README_FILE_HIERARCHY.png) **------>** ![yaml output](http://raw.github.com/evilwindowdog/itunesfs/master/README_YAML.png)
 
 ##Installation
 
@@ -29,9 +29,9 @@ Otherwise download the source and type:
 
 ###Organise your folders
 
-Your files have to be organized as shown in the "example" app, which is included in the package. Note that all files should be encoded using **UTF-8**.
+Your files have to be organised as shown in the "example" app, which is included in the package. Note that all files should be encoded using **UTF-8**.
 
-![file hierarchy](README_FILE_HIERARCHY.png) 
+![file hierarchy](http://raw.github.com/evilwindowdog/itunesfs/master/README_FILE_HIERARCHY.png)
 
 * At the root folder, the **config_app.yaml** contains the basic configuration for the app. 
 * One or more **versions** can exist as folders under the root folder. 
@@ -42,7 +42,7 @@ Your files have to be organized as shown in the "example" app, which is included
     * the **keywords.txt**, that is a comma separated list of the keywords. The spaces around each keyword, will be erased. Also a warning will be produced when they exceed the App Store 100 character limit.
     * a **screenshot** folder. It can contain ipad, iphone_3.5in or iphone_4in subfolders. Each device subfolder can have one or more screenshot files. The order that they will be used is alphabetical.
 
-The "en-US" locale must always contain the following files: **config-local.yaml**, **description.txt**, **keywords.txt**. Even though screenshots are optional, itmsp will faild to produce the .itmsp without them.
+The "en-US" locale must always contain the following files: **config-local.yaml**, **description.txt**, **keywords.txt**. Even though screenshots are optional, itmsp will fail to produce the .itmsp without them.
 
 For the other locales, these files are **optional**. If a file is not found, the corresponding "en-US" file will be used instead.
 

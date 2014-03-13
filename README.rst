@@ -59,11 +59,11 @@ Usage
 Organise your folders
 ~~~~~~~~~~~~~~~~~~~~~
 
-Your files have to be organized as shown in the "example" app, which is
+Your files have to be organised as shown in the "example" app, which is
 included in the package. Note that all files should be encoded using
 **UTF-8**.
 
-.. figure:: README_FILE_HIERARCHY.png
+.. figure:: http://raw.github.com/evilwindowdog/itunesfs/master/README_FILE_HIERARCHY.png
    :alt: file hierarchy
 
    file hierarchy
@@ -89,7 +89,7 @@ included in the package. Note that all files should be encoded using
 
 The "en-US" locale must always contain the following files:
 **config-local.yaml**, **description.txt**, **keywords.txt**. Even
-though screenshots are optional, itmsp will faild to produce the .itmsp
+though screenshots are optional, itmsp will fail to produce the .itmsp
 without them.
 
 For the other locales, these files are **optional**. If a file is not
@@ -128,5 +128,5 @@ If you have installed *itmsp*, change to the directory where
 
         itmsp package -i output.yaml
 
-.. |file hierarchy| image:: http://enews.cityyear.org/customer_images/32/wordpress-icon-small.jpg%20=150x
-.. |yaml output| image:: http://upload.wikimedia.org/wikipedia/commons/a/a5/Apple_gray_logo.png%20=170x
+.. |file hierarchy| image:: http://raw.github.com/evilwindowdog/itunesfs/master/README_FILE_HIERARCHY.png
+.. |yaml output| image:: http://raw.github.com/evilwindowdog/itunesfs/master/README_YAML.png
