@@ -9,7 +9,7 @@ An easier way is to **use itunes_transporter_generator (itmsp)** (<https://githu
 
 Essentially, **itunesfs**, by itself, performs the following coversion:
 
-![file hierarchy](README_FILE_HIERARCHY.png =150x) **------>** ![file hierarchy](README_YAML.png =170x)
+![file hierarchy](README_FILE_HIERARCHY.png =150x) **------>** ![yaml output](README_YAML.png =170x)
 
 ##Installation
 

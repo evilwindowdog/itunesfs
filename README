@@ -1,8 +1,0 @@
-Script for generating an iTunes Connect package (.itmsp) straight from your file system.
-
-iTunes_file_system (itunesfs) requires that you just organise your assets (screenshots, decription, keywords )in a spesific file hierarchy. Running "itunesfs" produces an intermediate  YAML configuration file. 
-
-If you have itunes_transporter_generator installed, "itunesfs" can use it to generate the final .itmsp package that can be uploaded at iTunes Connect.
-
-Download itunes_transporter_generator from:
-https://github.com/colinhumber/itunes_transporter_generator

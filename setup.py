@@ -5,16 +5,16 @@ from setuptools import setup
 
 setup(
     name='itunesfs',
-    version='1.0.0.1',
-    description='Script for generating an iTunes Connect package (.itmsp) straight from your file system',
-    long_description=open('README', "r", encoding='utf-8-sig').read(),
+    version='1.0.0.3',
+    description='Script (python3 atm) for generating an iTunes Connect package (.itmsp) straight from your file system',
+    long_description=open('README.rst', "r", encoding='utf-8-sig').read(),
     author='Petros Douvantzis',
     author_email='petrakeas@gmail.com',   
     packages=['itunesfslib'],
     entry_points = {
         'console_scripts': ['itunesfs=itunesfslib.command_line:main'],
     },
-    url='https://github.com/evilwindowdog',
+    url='https://github.com/evilwindowdog/itunesfs',
     license='MIT',
     install_requires=[
     "pyyaml"
