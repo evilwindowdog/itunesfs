@@ -1,35 +1,37 @@
 #itunes_file_system (itunesfs)
-**Script for generating an iTunes Connect package (.itmsp) straight from the file system**
+**Script for generating an iTunes Connect package (.itmsp) straight from your asset folder**
 
-The task of uploading and managing the localised assets for your iOS app in a tedious one. When the number of supported languages increases, the effort needed via the web interface <https://itunesconnect.apple.com> is increased accordingly. Apple's **iTunes Transporter** CLI gives you the ability to upload App Store Packages (.itmsp) from the command line. However, altering the data requires an XML file manipulation. 
+The task of managing and uploading the localised assets of your iOS app in a tedious one. When the number of supported languages increases, the effort needed via the web interface at <https://itunesconnect.apple.com> is increased accordingly. Apple's **iTMSTransporter** tool gives you the ability to download and upload App Store Packages (.itmsp) from the command line. However, altering the data requires an XML file manipulation. 
 
-An easier way is to **use itunes_transporter_generator (itmsp)** (<https://github.com/colinhumber/itunes_transporter_generator>), which requires editing a **YAML** file and exports the final **.itmsp package**. However, when multiple localized assets are involved, this leads to a huge unmanageable YAML file.
+An easier way is to use **itunes_transporter_generator (itmsp)** , which lets you add your metadata in a **YAML** app configuration. Running *itmsp* converts the YAML file to an **.itmsp package** that can be uploaded using iTMSTransporter. However, when multiple localized assets are involved, this solution leads to editing a huge unmanageable YAML file.
 
-**itunes_file_system (itunesfs)** requires that you just organise your assets (screenshots, decription, keywords )in a spesific file hierarchy. Running *itunesfs* produces an intermediate YAML configuration file. If you also have *itmsp* installed, *itunesfs* can use it to generate the final .itmsp package that can be uploaded at iTunes Connect.
+This tool, **itunes_file_system (itunesfs)** requires that you organise your assets (screenshots, decription, keywords etc)in a spesific file hierarchy. Running *itunesfs* produces an intermediate YAML configuration file and, if you have *itmsp* installed, it uses it to generate the final .itmsp package. You can then uploaded it on iTunes Connect using iTMSTransporter.
 
-Essentially, **itunesfs**, by itself, performs the following coversion:
+Essentially, **itunesfs** performs the following coversion:
 
-![file hierarchy](http://raw.github.com/evilwindowdog/itunesfs/master/README_FILE_HIERARCHY.png) **------>** ![yaml output](http://raw.github.com/evilwindowdog/itunesfs/master/README_YAML.png)
+![file hierarchy](http://raw.github.com/evilwindowdog/itunesfs/master/README_PIPELINE.png)
 
 ##Installation
 
 1. Download and install **python 3** <http://www.python.org/download/>. Python 2.x is not supported at the moment.
-* If you have **PIP** installed for Python 3 (<http://pip.readthedocs.org/en/latest/installing.html>) type:
+1. If you have **PIP** installed for Python 3 (<http://pip.readthedocs.org/en/latest/installing.html>) type:
 
 		$ sudo pip3 install itunesfs  
-Otherwise download the source and type:
+Otherwise download the source from <https://pypi.python.org/pypi/itunesfs/> and type:
 
 		$ sudo python3 setup.py install  
 
-* *(optional)* Install itunes_transporter_generator <https://github.com/colinhumber/itunes_transporter_generator>. Run:
+1. *(optional)* Install itunes_transporter_generator <https://github.com/colinhumber/itunes_transporter_generator>. Run:
 
 		$ gem install itunes_transporter_generator
+		
+*Note that you will need apple's iTMSTransporter, to upload the package at iTunes. If you have Xcode installed, you already have this tool on your system.*
 		
 ##Usage
 
 ###Organise your folders
 
-Your files have to be organised as shown in the "example" app, which is included in the package. Note that all files should be encoded using **UTF-8**.
+Your files have to be organised under a root folder and organised as shown in the "example" app, which is included in the package. Note that all files should be encoded using **UTF-8**.
 
 ![file hierarchy](http://raw.github.com/evilwindowdog/itunesfs/master/README_FILE_HIERARCHY.png)
 
@@ -50,18 +52,42 @@ For the other locales, these files are **optional**. If a file is not found, the
 
 ###Generate the .itmsp
 
-If your python's bin folder is in yout PATH, then **itunesfs** can be executed from the command line.
+If your Python 3's bin folder is in yout PATH, then **itunesfs** can be executed from the command line.
 
-####To create the YAML configuration file
-		itunesfs <path_to_asset_folder>
+####To generate *only* the YAML configuration file
+		$itunesfs <path_to_asset_folder> -t YAML
 		
-This creates an *output.yaml* file under the root of the input folder. If you want to change the output directory use:
+e.g. `$itunesfs /example`: this parses the "example" directory and generates an *output.yaml* file under it. 
 
-		itunesfs <path_to_asset_folder> -o <output_path>
+If you want to change the output directory use:
+
+		$itunesfs <path_to_asset_folder> -o <output_path> -t YAML
 This will also copy the screenshot files.
 
-####To create the .itmsp package
+####To generate the .itmsp package
 
-If you have installed *itmsp*, change to the directory where *output.yaml* is. Make any further chagnes and run:
+If you have installed *itmsp*, *itunesfs* will call it by default to generate the package from the YAML file.:
 
-		itmsp package -i output.yaml
+		$itunesfs <path_to_asset_folder>
+		
+###Verifying and uploading the package
+
+Here's a really small guide for Apple's iTMSTransporter.
+
+For ease of use, add this alias to your bash profile.
+
+* run: ``$open ~/.bash_profile``
+* add this line and save: ``alias iTMSTransporter='`xcode-select --print-path`/../Applications/Application\ Loader.app/Contents/MacOS/itms/bin/iTMSTransporter'``
+
+#####Using iTMSTransporter:
+<http://stackoverflow.com/a/17824838>
+
+Remember to escape with "\" special characters like "$" in the password field. Also the path can be either the path for one package or the path for a folder containing one ore more packages.
+
+To verify the package:
+	
+	$iTMSTransporter -m verify  -u <username> -p <password>  -f <path_for_package>
+
+To uplaod the package:
+	
+	$iTMSTransporter -m upload  -u <username> -p <password>  -f <path_for_package>

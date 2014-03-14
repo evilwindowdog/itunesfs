@@ -43,6 +43,7 @@ def convert(path, outpath=''):
         if vdir.endswith('.itmsp'):continue
         #find locales
         master_locale = {}
+        master_locale_config_local = {}
         locales = []
         ldirs = next(os.walk(os.path.join(path,vdir)))[1]
         if master_locale_name not in ldirs:
@@ -61,24 +62,28 @@ def convert(path, outpath=''):
                             myexit('The {} was not found in location {}'.format(asset_type, filepath))
                         else:
                             continue
-                    else:
+                    else:                           
                         if asset_type in master_locale:
-                                 asset_types_copied.append(asset_type)
-                                 locale.update({asset_type : master_locale[asset_type]})
+                            asset_types_copied.append(asset_type)
+                            locale.update({asset_type : master_locale[asset_type]})
+                        elif asset_type == 'config_local':
+                            asset_types_copied.append(asset_type)
+                            locale.update(master_locale_config_local)
                         continue
 
                 if asset_type == 'config_local':
                     stream = codecs.open(filepath, 'r', encoding='utf-8-sig')
-                    asset = yaml.load(stream)
-                    locale.update(asset)
+                    config_local_dic = yaml.load(stream)
+                    locale.update(config_local_dic)
+                    if ldir == master_locale_name:
+                        master_locale_config_local = config_local_dic
                 elif asset_type == 'keywords':
                     keywords_text = codecs.open(filepath, 'r', encoding="utf-8-sig").read()
                     keywords = [keyword.strip() for keyword in keywords_text.split(",")]
                     asset = keywords
                     chars_count = len(keywords)-1 + sum([len(keyword) for keyword in keywords])
-
                     if chars_count > chars_count_max:
-                        warning('The maximum keyword character count was exceeded in {} locale of v{}'.format(ldir, vdir))
+                        printwarning('The maximum keyword character count was exceeded in {} locale of v{}'.format(ldir, vdir))
                     locale.update({asset_type : asset})
                 elif asset_type == 'description':
                    asset = open(filepath, 'r', encoding='utf-8-sig').read()

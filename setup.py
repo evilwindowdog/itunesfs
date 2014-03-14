@@ -1,11 +1,16 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 from setuptools import setup
+import sys
 
+#pandoc -o README.rst README.md
+
+if sys.version_info < (3, 0):
+    sys.stdout.write("Sorry, requires Python 3.x, not Python 2.x\n")
+    sys.exit(1)
 
 setup(
     name='itunesfs',
-    version='1.0.0.3',
+    version='1.0.0.4',
     description='Script (python3 atm) for generating an iTunes Connect package (.itmsp) straight from your file system',
     long_description=open('README.rst', "r", encoding='utf-8-sig').read(),
     author='Petros Douvantzis',
@@ -17,7 +22,8 @@ setup(
     url='https://github.com/evilwindowdog/itunesfs',
     license='MIT',
     install_requires=[
-    "pyyaml"
+    "pyyaml",
+    "xtermcolor"
     ],
     keywords=['itunesconnect', 'localization', 'yaml'],
     classifiers=[
