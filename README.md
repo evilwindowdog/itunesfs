@@ -1,15 +1,18 @@
 #itunes_file_system (itunesfs)
 **Script for generating an iTunes Connect package (.itmsp) straight from your asset folder**
 
+***itunesfs*** performs the following conversion:
+
+.![pipeline](http://raw.github.com/evilwindowdog/itunesfs/master/README_PIPELINE.png)
+
 The task of managing and uploading the localised assets of your iOS app in a tedious one. When the number of supported languages increases, the effort needed via the web interface at <https://itunesconnect.apple.com> is increased accordingly. Apple's **iTMSTransporter** tool gives you the ability to download and upload App Store Packages (.itmsp) from the command line. However, altering the data requires an XML file manipulation. 
 
 An easier way is to use **itunes_transporter_generator (itmsp)** , which lets you add your metadata in a **YAML** app configuration. Running *itmsp* converts the YAML file to an **.itmsp package** that can be uploaded using iTMSTransporter. However, when multiple localized assets are involved, this solution leads to editing a huge unmanageable YAML file.
 
-This tool, **itunes_file_system (itunesfs)** requires that you organise your assets (screenshots, decription, keywords etc)in a spesific file hierarchy. Running *itunesfs* produces an intermediate YAML configuration file and, if you have *itmsp* installed, it uses it to generate the final .itmsp package. You can then uploaded it on iTunes Connect using iTMSTransporter.
+This tool, **itunes_file_system (itunesfs)** requires that you organise your assets (screenshots, description, keywords etc)in a specific file hierarchy. Running *itunesfs* produces an intermediate YAML configuration file and, if you have *itmsp* installed, it uses it to generate the final .itmsp package. You can then uploaded it on iTunes Connect using iTMSTransporter.
 
-Essentially, **itunesfs** performs the following coversion:
 
-![pipeline](http://raw.github.com/evilwindowdog/itunesfs/master/README_PIPELINE.png)
+ 
 
 ##Installation
 
@@ -33,7 +36,7 @@ Otherwise download the source from <https://pypi.python.org/pypi/itunesfs/> and 
 
 Your files have to be organised under a root folder and organised as shown in the "example" app, which is included in the package. Note that all files should be encoded using **UTF-8**.
 
-![file hierarchy](http://raw.github.com/evilwindowdog/itunesfs/master/README_FILE_HIERARCHY.png)
+.![file hierarchy](http://raw.github.com/evilwindowdog/itunesfs/master/README_FILE_HIERARCHY.png)
 
 * At the root folder, the **config_app.yaml** contains the basic configuration for the app. 
 * One or more **versions** can exist as folders under the root folder. 
@@ -55,6 +58,7 @@ For the other locales, these files are **optional**. If a file is not found, the
 If your Python 3's bin folder is in yout PATH, then **itunesfs** can be executed from the command line.
 
 ####To generate *only* the YAML configuration file
+
 		$ itunesfs <path_to_asset_folder> -t YAML
 		
 e.g. `$itunesfs /example`: this parses the "example" directory and generates an *output.yaml* file under it. 
@@ -79,8 +83,7 @@ For ease of use, add this alias to your bash profile.
 * run: ``$open ~/.bash_profile``
 * add this line and save: ``alias iTMSTransporter='`xcode-select --print-path`/../Applications/Application\ Loader.app/Contents/MacOS/itms/bin/iTMSTransporter'``
 
-#####Using iTMSTransporter:
-<http://stackoverflow.com/a/17824838>
+####Using iTMSTransporter:
 
 Remember to escape with "\" special characters like "$" in the password field. Also the path can be either the path for one package or the path for a folder containing one ore more packages.
 
@@ -91,3 +94,5 @@ To verify the package:
 To uplaod the package:
 	
 	$ iTMSTransporter -m upload  -u <username> -p <password>  -f <path_for_package>
+	
+More information: <http://stackoverflow.com/a/17824838>

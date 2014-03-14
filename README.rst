@@ -4,6 +4,10 @@ itunes\_file\_system (itunesfs)
 **Script for generating an iTunes Connect package (.itmsp) straight from
 your asset folder**
 
+***itunesfs*** performs the following conversion:
+
+.\ |pipeline|
+
 The task of managing and uploading the localised assets of your iOS app
 in a tedious one. When the number of supported languages increases, the
 effort needed via the web interface at https://itunesconnect.apple.com
@@ -20,18 +24,12 @@ assets are involved, this solution leads to editing a huge unmanageable
 YAML file.
 
 This tool, **itunes\_file\_system (itunesfs)** requires that you
-organise your assets (screenshots, decription, keywords etc)in a
-spesific file hierarchy. Running *itunesfs* produces an intermediate
+organise your assets (screenshots, description, keywords etc)in a
+specific file hierarchy. Running *itunesfs* produces an intermediate
 YAML configuration file and, if you have *itmsp* installed, it uses it
 to generate the final .itmsp package. You can then uploaded it on iTunes
 Connect using iTMSTransporter.
 
-Essentially, **itunesfs** performs the following coversion:
-
-.. figure:: http://raw.github.com/evilwindowdog/itunesfs/master/README_PIPELINE.png
-   :alt: pipeline
-
-   pipeline
 Installation
 ------------
 
@@ -72,10 +70,7 @@ Your files have to be organised under a root folder and organised as
 shown in the "example" app, which is included in the package. Note that
 all files should be encoded using **UTF-8**.
 
-.. figure:: http://raw.github.com/evilwindowdog/itunesfs/master/README_FILE_HIERARCHY.png
-   :alt: file hierarchy
-
-   file hierarchy
+.\ |file hierarchy|
 
 -  At the root folder, the **config\_app.yaml** contains the basic
    configuration for the app.
@@ -152,9 +147,7 @@ For ease of use, add this alias to your bash profile.
    ``alias iTMSTransporter='`xcode-select --print-path`/../Applications/Application\ Loader.app/Contents/MacOS/itms/bin/iTMSTransporter'``
 
 Using iTMSTransporter:
-''''''''''''''''''''''
-
-http://stackoverflow.com/a/17824838
+^^^^^^^^^^^^^^^^^^^^^^
 
 Remember to escape with "" special characters like "$" in the password
 field. Also the path can be either the path for one package or the path
@@ -172,3 +165,7 @@ To uplaod the package:
 
     $ iTMSTransporter -m upload  -u <username> -p <password>  -f <path_for_package>
 
+More information: http://stackoverflow.com/a/17824838
+
+.. |pipeline| image:: http://raw.github.com/evilwindowdog/itunesfs/master/README_PIPELINE.png
+.. |file hierarchy| image:: http://raw.github.com/evilwindowdog/itunesfs/master/README_FILE_HIERARCHY.png
