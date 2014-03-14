@@ -9,14 +9,14 @@ This tool, **itunes_file_system (itunesfs)** requires that you organise your ass
 
 Essentially, **itunesfs** performs the following coversion:
 
-![file hierarchy](http://raw.github.com/evilwindowdog/itunesfs/master/README_PIPELINE.png)
+![pipeline](http://raw.github.com/evilwindowdog/itunesfs/master/README_PIPELINE.png)
 
 ##Installation
 
 1. Download and install **python 3** <http://www.python.org/download/>. Python 2.x is not supported at the moment.
 1. If you have **PIP** installed for Python 3 (<http://pip.readthedocs.org/en/latest/installing.html>) type:
 
-		$ sudo pip3 install itunesfs  
+		$ pip3 install itunesfs  
 Otherwise download the source from <https://pypi.python.org/pypi/itunesfs/> and type:
 
 		$ sudo python3 setup.py install  
@@ -55,20 +55,20 @@ For the other locales, these files are **optional**. If a file is not found, the
 If your Python 3's bin folder is in yout PATH, then **itunesfs** can be executed from the command line.
 
 ####To generate *only* the YAML configuration file
-		$itunesfs <path_to_asset_folder> -t YAML
+		$ itunesfs <path_to_asset_folder> -t YAML
 		
 e.g. `$itunesfs /example`: this parses the "example" directory and generates an *output.yaml* file under it. 
 
 If you want to change the output directory use:
 
-		$itunesfs <path_to_asset_folder> -o <output_path> -t YAML
+		$ itunesfs <path_to_asset_folder> -o <output_path> -t YAML
 This will also copy the screenshot files.
 
 ####To generate the .itmsp package
 
 If you have installed *itmsp*, *itunesfs* will call it by default to generate the package from the YAML file.:
 
-		$itunesfs <path_to_asset_folder>
+		$ itunesfs <path_to_asset_folder>
 		
 ###Verifying and uploading the package
 
@@ -86,8 +86,8 @@ Remember to escape with "\" special characters like "$" in the password field. A
 
 To verify the package:
 	
-	$iTMSTransporter -m verify  -u <username> -p <password>  -f <path_for_package>
+	$ iTMSTransporter -m verify  -u <username> -p <password>  -f <path_for_package>
 
 To uplaod the package:
 	
-	$iTMSTransporter -m upload  -u <username> -p <password>  -f <path_for_package>
+	$ iTMSTransporter -m upload  -u <username> -p <password>  -f <path_for_package>

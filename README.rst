@@ -29,9 +29,9 @@ Connect using iTMSTransporter.
 Essentially, **itunesfs** performs the following coversion:
 
 .. figure:: http://raw.github.com/evilwindowdog/itunesfs/master/README_PIPELINE.png
-   :alt: file hierarchy
+   :alt: pipeline
 
-   file hierarchy
+   pipeline
 Installation
 ------------
 
@@ -42,7 +42,7 @@ Installation
 
    ::
 
-       $ sudo pip3 install itunesfs  
+       $ pip3 install itunesfs  
 
    Otherwise download the source from
    https://pypi.python.org/pypi/itunesfs/ and type:
@@ -115,7 +115,7 @@ To generate *only* the YAML configuration file
 
 ::
 
-        $itunesfs <path_to_asset_folder> -t YAML
+        $ itunesfs <path_to_asset_folder> -t YAML
         
 
 e.g. ``$itunesfs /example``: this parses the "example" directory and
@@ -125,7 +125,7 @@ If you want to change the output directory use:
 
 ::
 
-        $itunesfs <path_to_asset_folder> -o <output_path> -t YAML
+        $ itunesfs <path_to_asset_folder> -o <output_path> -t YAML
 
 This will also copy the screenshot files.
 
@@ -137,7 +137,7 @@ generate the package from the YAML file.:
 
 ::
 
-        $itunesfs <path_to_asset_folder>
+        $ itunesfs <path_to_asset_folder>
         
 
 Verifying and uploading the package
@@ -164,11 +164,11 @@ To verify the package:
 
 ::
 
-    $iTMSTransporter -m verify  -u <username> -p <password>  -f <path_for_package>
+    $ iTMSTransporter -m verify  -u <username> -p <password>  -f <path_for_package>
 
 To uplaod the package:
 
 ::
 
-    $iTMSTransporter -m upload  -u <username> -p <password>  -f <path_for_package>
+    $ iTMSTransporter -m upload  -u <username> -p <password>  -f <path_for_package>
 

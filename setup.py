@@ -10,7 +10,7 @@ if sys.version_info < (3, 0):
 
 setup(
     name='itunesfs',
-    version='1.0.0.4',
+    version='1.0.0.5',
     description='Script (python3 atm) for generating an iTunes Connect package (.itmsp) straight from your file system',
     long_description=open('README.rst', "r", encoding='utf-8-sig').read(),
     author='Petros Douvantzis',
