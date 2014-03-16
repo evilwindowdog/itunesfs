@@ -10,7 +10,7 @@ if sys.version_info < (3, 0):
 
 setup(
     name='itunesfs',
-    version='1.0.0.5',
+    version='1.0.0.6',
     description='Script (python3 atm) for generating an iTunes Connect package (.itmsp) straight from your file system',
     long_description=open('README.rst', "r", encoding='utf-8-sig').read(),
     author='Petros Douvantzis',
@@ -25,7 +25,7 @@ setup(
     "pyyaml",
     "xtermcolor"
     ],
-    keywords=['itunesconnect', 'localization', 'yaml'],
+    keywords=['itunesconnect', 'localization', 'yaml','apple','itunes','iTMStransporter','iOS'],
     classifiers=[
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",

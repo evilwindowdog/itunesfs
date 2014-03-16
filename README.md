@@ -5,26 +5,26 @@
 
 .![pipeline](http://raw.github.com/evilwindowdog/itunesfs/master/README_PIPELINE.png)
 
-The task of managing and uploading the localised assets of your iOS app in a tedious one. When the number of supported languages increases, the effort needed via the web interface at <https://itunesconnect.apple.com> is increased accordingly. Apple's **iTMSTransporter** tool gives you the ability to download and upload App Store Packages (.itmsp) from the command line. However, altering the data requires an XML file manipulation. 
+The task of managing and uploading the localised assets of your iOS app in a tedious one. When the number of supported languages increases, the effort needed via the web interface of [iTunes Connect](<https://itunesconnect.apple.com>) is increased accordingly. Apple's **iTMSTransporter** tool gives you the ability to download and upload App Store Packages (.itmsp) from the command line. However, altering the data requires an XML file manipulation. 
 
-An easier way is to use **itunes_transporter_generator (itmsp)** , which lets you add your metadata in a **YAML** app configuration. Running *itmsp* converts the YAML file to an **.itmsp package** that can be uploaded using iTMSTransporter. However, when multiple localized assets are involved, this solution leads to editing a huge unmanageable YAML file.
+An easier way is to use [**itunes_transporter_generator (itmsp)**](<https://github.com/colinhumber/itunes_transporter_generator>) , which lets you add your metadata in a **YAML** app configuration. Running *itmsp* converts the YAML file to an **.itmsp package** that can be uploaded using iTMSTransporter. However, when multiple localized assets are involved, this solution leads to editing a huge unmanageable YAML file.
 
-This tool, **itunes_file_system (itunesfs)** requires that you organise your assets (screenshots, description, keywords etc)in a specific file hierarchy. Running *itunesfs* produces an intermediate YAML configuration file and, if you have *itmsp* installed, it uses it to generate the final .itmsp package. You can then uploaded it on iTunes Connect using iTMSTransporter.
+This tool, **itunes_file_system (itunesfs)**, lets you organise your assets (screenshots, description, keywords etc) in a specific file hierarchy. Running *itunesfs* produces an intermediate YAML configuration file and, if you have *itmsp* installed, it uses it to generate the final .itmsp package. You can then uploaded it on iTunes Connect using iTMSTransporter.
 
 
  
 
 ##Installation
 
-1. Download and install **python 3** <http://www.python.org/download/>. Python 2.x is not supported at the moment.
-1. If you have **PIP** installed for Python 3 (<http://pip.readthedocs.org/en/latest/installing.html>) type:
+1. Download and install [**python 3**](<http://www.python.org/download/>). Python 2.x is not supported at the moment.
+1. If you have **PIP** [installed](<http://pip.readthedocs.org/en/latest/installing.html>) for Python 3 type:
 
 		$ pip3 install itunesfs  
 Otherwise download the source from <https://pypi.python.org/pypi/itunesfs/> and type:
 
 		$ sudo python3 setup.py install  
 
-1. *(optional)* Install itunes_transporter_generator <https://github.com/colinhumber/itunes_transporter_generator>. Run:
+1. *(optional)* Install [itunes_transporter_generator](<https://github.com/colinhumber/itunes_transporter_generator>) running:
 
 		$ gem install itunes_transporter_generator
 		
@@ -34,7 +34,7 @@ Otherwise download the source from <https://pypi.python.org/pypi/itunesfs/> and 
 
 ###Organise your folders
 
-Your files have to be organised under a root folder and organised as shown in the "example" app, which is included in the package. Note that all files should be encoded using **UTF-8**.
+Your files have to be under a root folder and organised as shown in the "example" app, which is included in the package. Note that all files should be encoded using **UTF-8**.
 
 .![file hierarchy](http://raw.github.com/evilwindowdog/itunesfs/master/README_FILE_HIERARCHY.png)
 
@@ -61,7 +61,7 @@ If your Python 3's bin folder is in yout PATH, then **itunesfs** can be executed
 
 		$ itunesfs <path_to_asset_folder> -t YAML
 		
-e.g. `$itunesfs /example`: this parses the "example" directory and generates an *output.yaml* file under it. 
+e.g. `$itunesfs /example -t YAML`: this parses the "example" directory and generates an *output.yaml* file under it. 
 
 If you want to change the output directory use:
 

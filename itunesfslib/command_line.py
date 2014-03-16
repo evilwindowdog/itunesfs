@@ -52,13 +52,14 @@ def main():
         return
     
     # convert "output.yaml" to a .itmsp package
-    if not shutil.which('itmsp'):
+    executable_path = shutil.which('itmsp')
+    if not executable_path:
         myexit("""\"itmsp\" is not installed. \n\n"""
                "In order to convert the generated YAML file to .itmsp package,"
                """you have to install itmsp from https://github.com/colinhumber/itunes_transporter_generator.\n\n"""
                """If you have ruby installed, run:\n   \"$ gem install itunes_transporter_generator\"""")
     os.chdir(savepath)
-    success = not subprocess.call(['itmsp', 'package', '-i', 'output.yaml'])
+    success = not subprocess.call([executable_path, 'package', '-i', 'output.yaml'])
     if not success:
         myexit('Failed to convert output.yaml to .itmsp package')
 
