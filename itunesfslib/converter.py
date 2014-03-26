@@ -2,7 +2,7 @@
 from __future__ import print_function
 from collections import OrderedDict
 from shutil import copytree, ignore_patterns, rmtree
-import sys, os, argparse, codecs, yaml
+import sys, os, argparse, codecs, yaml, traceback
 
 from itunesfslib.helpers import *
 from itunesfslib.humanyaml import *
@@ -35,12 +35,27 @@ def convert(path, outpath=''):
     if not os.path.isfile(filepath):
         myexit('The app configuration was not found in location {}'.format(filepath))
     stream = open(filepath, "r", encoding='utf-8-sig').read()
-    app_configuration = yaml.load(stream)
-
+    app_configuration = yaml.load(stream)  
+    
     #find versions
-    versions = []
+    vdirs = []
     for vdir in next(os.walk(path))[1]:
         if vdir.endswith('.itmsp'):continue
+        vdirs.append(vdir)
+    if "versions" in app_configuration:
+        vdirs_restricted_dict = app_configuration.pop('versions')
+        try:
+            vdirs_restricted = [item['name'] for item in vdirs_restricted_dict]
+            dirs_not_found = set(vdirs_restricted) - set(vdirs)
+            if dirs_not_found:
+                myexit("The following folders were not found: {}".format(dirs_not_found))
+            vdirs = vdirs_restricted
+        except Exception as inst:
+            traceback.print_exc(file=sys.stdout)
+            myexit('Add one or more versions in "config_app.yaml"')
+        
+    versions = []                   
+    for vdir in vdirs:
         #find locales
         master_locale = {}
         master_locale_config_local = {}

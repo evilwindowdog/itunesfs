@@ -2,3 +2,5 @@
 team_id: ABCDE12345 # optional if provider is supplied
 vendor_id: sample_sku # the application's SKU as defined in iTunes Connect 
 #id_prefix: com.samplecompany.applicationname. # if supplied, this will be prefixed to achievement, leaderboard, and in-app purchase IDs
+#versions: #optional, enable if you want to include spesific versions
+#  - name: '1.2'
