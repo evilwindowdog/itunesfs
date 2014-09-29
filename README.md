@@ -85,7 +85,7 @@ For ease of use, add this alias to your bash profile.
 
 ####Using iTMSTransporter:
 
-Remember to escape with "\" special characters like "$" in the password field. Also the path can be either the path for one package or the path for a folder containing one ore more packages.
+Remember to escape with "\" special characters like "$" in the password field. Also the path can be either the path for one package or the path for a folder containing one or more packages.
 
 To verify the package:
 	

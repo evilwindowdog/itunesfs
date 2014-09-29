@@ -108,7 +108,7 @@ def convert(path, outpath=''):
                     locale.update({asset_type : literal(asset)})
                 elif asset_type == 'screenshots':
                     devices_screenshots = {}
-                    for device in ['iphone_4in', 'iphone_3.5in', 'ipad']:
+                    for device in ['iphone_3.5in', 'iphone_4in', 'iphone_4.7in', 'iphone_5.5in', 'ipad']:
                         device_filepath = os.path.join(filepath, device)
                         if not os.path.exists(device_filepath):
                             continue

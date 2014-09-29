@@ -59,7 +59,7 @@ def main():
                """you have to install itmsp from https://github.com/colinhumber/itunes_transporter_generator.\n\n"""
                """If you have ruby installed, run:\n   \"$ gem install itunes_transporter_generator\"""")
     os.chdir(savepath)
-    success = not subprocess.call([executable_path, 'package', '-i', 'output.yaml'])
+    success = not subprocess.call([executable_path, 'package', '-i', 'output.yaml','--prefix-image'])
     if not success:
         myexit('Failed to convert output.yaml to .itmsp package')
 
