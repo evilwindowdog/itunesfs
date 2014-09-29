@@ -45,7 +45,7 @@ Your files have to be under a root folder and organised as shown in the "example
     * the **config-local.yaml**, that contains locale related configuration such as the title of the app
     * the **description.txt**, that holds the App Store description
     * the **keywords.txt**, that is a comma separated list of the keywords. The spaces around each keyword, will be erased. Also a warning will be produced when they exceed the App Store 100 character limit.
-    * a **screenshot** folder. It can contain ipad, iphone_3.5in or iphone_4in subfolders. Each device subfolder can have one or more screenshot files. The order that they will be used is alphabetical.
+    * a **screenshot** folder. It can contain ipad, iphone_3.5in, iphone_4in, iphone_4.7in or iphone_5.5in subfolders. Each device subfolder can have one or more screenshot files. The order that they will be used is alphabetical.
 
 The "en-US" locale must always contain the following files: **config-local.yaml**, **description.txt**, **keywords.txt**. Even though screenshots are optional, itmsp will fail to produce the .itmsp without them.
 
@@ -57,7 +57,13 @@ For the other locales, these files are **optional**. If a file is not found, the
 
 If your Python 3's bin folder is in yout PATH, then **itunesfs** can be executed from the command line.
 
-####To generate *only* the YAML configuration file
+####To generate the .itmsp package
+
+If you have installed *itmsp*, *itunesfs* will call it by default to generate the package from the YAML file.:
+
+		$ itunesfs <path_to_asset_folder>
+
+####To generate *only* the intermediate YAML configuration file
 
 		$ itunesfs <path_to_asset_folder> -t YAML
 		
@@ -68,11 +74,7 @@ If you want to change the output directory use:
 		$ itunesfs <path_to_asset_folder> -o <output_path> -t YAML
 This will also copy the screenshot files.
 
-####To generate the .itmsp package
 
-If you have installed *itmsp*, *itunesfs* will call it by default to generate the package from the YAML file.:
-
-		$ itunesfs <path_to_asset_folder>
 		
 ###Verifying and uploading the package
 

@@ -90,10 +90,10 @@ should be encoded using **UTF-8**.
       keywords. The spaces around each keyword, will be erased. Also a
       warning will be produced when they exceed the App Store 100
       character limit.
-   -  a **screenshot** folder. It can contain ipad, iphone\_3.5in or
-      iphone\_4in subfolders. Each device subfolder can have one or more
-      screenshot files. The order that they will be used is
-      alphabetical.
+   -  a **screenshot** folder. It can contain ipad, iphone\_3.5in,
+      iphone\_4in, iphone\_4.7in or iphone\_5.5in subfolders. Each
+      device subfolder can have one or more screenshot files. The order
+      that they will be used is alphabetical.
 
 The "en-US" locale must always contain the following files:
 **config-local.yaml**, **description.txt**, **keywords.txt**. Even
@@ -109,8 +109,18 @@ Generate the .itmsp
 If your Python 3's bin folder is in yout PATH, then **itunesfs** can be
 executed from the command line.
 
-To generate *only* the YAML configuration file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+To generate the .itmsp package
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you have installed *itmsp*, *itunesfs* will call it by default to
+generate the package from the YAML file.:
+
+::
+
+        $ itunesfs <path_to_asset_folder>
+
+To generate *only* the intermediate YAML configuration file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
@@ -128,17 +138,6 @@ If you want to change the output directory use:
 
 This will also copy the screenshot files.
 
-To generate the .itmsp package
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If you have installed *itmsp*, *itunesfs* will call it by default to
-generate the package from the YAML file.:
-
-::
-
-        $ itunesfs <path_to_asset_folder>
-        
-
 Verifying and uploading the package
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -155,7 +154,7 @@ Using iTMSTransporter:
 
 Remember to escape with "" special characters like "$" in the password
 field. Also the path can be either the path for one package or the path
-for a folder containing one ore more packages.
+for a folder containing one or more packages.
 
 To verify the package:
 
